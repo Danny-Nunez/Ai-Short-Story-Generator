@@ -100,7 +100,7 @@ export default function Home() {
     <Document>
       <Page>
         
-        <Image style={styles.image} src="https://dannyfullstack.dev/aibanner.jpg" />
+        <Image style={styles.image} src="https://dannyfullstack.dev/aibanner.jpeg" />
         <Text>{selectedStory} about {mainCharacterName}</Text>
         <Text>{story}</Text>
         
