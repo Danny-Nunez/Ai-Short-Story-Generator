@@ -8,7 +8,7 @@ import { PlayCircleOutlined } from "@ant-design/icons";
 import lottie from "lottie-web";
 import React from "react";
 import { PoweroffOutlined } from '@ant-design/icons';
-import { PDFDownloadLink, Document, Page, Text, Image } from '@react-pdf/renderer';
+import { PDFDownloadLink, Document, Page, Text, Image, View } from '@react-pdf/renderer';
 
 const inter = Inter({ subsets: ["latin"] });
 const animationData = require("../public/ai-orb.json");
@@ -98,16 +98,19 @@ export default function Home() {
 
   const MyDoc = ({ story, image }) => (
     <Document>
-      <Page>
+      <Page style={{ paddingTop: 35, paddingBottom: 65, paddingHorizontal: 35 }}>
         
-        <Image style={styles.image} src="https://dannyfullstack.dev/aibanner.jpeg" />
-        <Text>{selectedStory} about {mainCharacterName}</Text>
+        <Image style={{ width: '600px', height: '250px'}} src="../public/aitest2.jpeg" />
+        <View style={{ textAlign: 'center' }}>
+        <Text style={{ fontSize: 24 }}>{selectedStory} about {mainCharacterName}</Text>
         <Text>{story}</Text>
-        
+        </View>
+        <Text style={{ position: 'absolute', fontSize: 12, bottom: 30, left: 0, right: 0, textAlign: 'center', color: 'grey'  }} render={({ pageNumber, totalPages }) => (
+        `${pageNumber} / ${totalPages}`
+      )} fixed />
       </Page>
     </Document>
   );
-  console.log(image);
   
   
   return (
