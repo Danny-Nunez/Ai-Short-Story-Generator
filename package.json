@@ -10,10 +10,13 @@
   },
   "dependencies": {
     "@next/font": "13.1.6",
+    "@react-pdf/renderer": "^3.1.8",
     "antd": "^5.2.1",
     "aws-sdk": "^2.1317.0",
     "eslint": "8.34.0",
     "eslint-config-next": "13.1.6",
+    "html-to-image": "^1.11.11",
+    "jspdf": "^2.5.1",
     "lottie-web": "^5.10.2",
     "next": "13.1.6",
     "openai": "^3.1.0",

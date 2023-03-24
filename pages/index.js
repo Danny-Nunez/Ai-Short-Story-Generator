@@ -7,6 +7,8 @@ import request from "@/utils/request";
 import { PlayCircleOutlined } from "@ant-design/icons";
 import lottie from "lottie-web";
 import React from "react";
+import { PoweroffOutlined } from '@ant-design/icons';
+import { PDFDownloadLink, Document, Page, Text, Image } from '@react-pdf/renderer';
 
 const inter = Inter({ subsets: ["latin"] });
 const animationData = require("../public/ai-orb.json");
@@ -19,6 +21,10 @@ export default function Home() {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const container = React.useRef(null);
   const [autoplay, setAutoplay] = useState(false);
+  const [selectedStory, setSelectedStory] = useState(null);
+  const [title, setTitle] = useState(null);
+  const [mainCharacterName, setMainCharacterName] = useState(null);
+
   
   const onFinish = async (values) => {
     setLoadingTo(true);
@@ -33,6 +39,9 @@ export default function Home() {
         setStoryTo(response.story);
         setImageTo(response.image);
         setIsModalVisible(true);
+        setSelectedStory(values.type);
+        setMainCharacterName(values.mainCharacterName);
+        setTitle(`Generated ${values.type} Story`);
       }
     } catch (error) {
       message.error(error.message);
@@ -85,6 +94,21 @@ export default function Home() {
     setAutoplay(false);
     console.log('Modal closed');
   };
+ 
+
+  const MyDoc = ({ story, image }) => (
+    <Document>
+      <Page>
+        
+        <Image style={styles.image} src="https://dannyfullstack.dev/aibanner.jpg" />
+        <Text>{selectedStory} about {mainCharacterName}</Text>
+        <Text>{story}</Text>
+        
+      </Page>
+    </Document>
+  );
+  console.log(image);
+  
   
   return (
   <>
@@ -94,12 +118,15 @@ export default function Home() {
     </Head>
     <main className={styles.main}>
       <div className={styles.description}>
-        <Space direction="vertical" size="large">
+        <Space className={styles.shellWrap} direction="vertical" size="large">
           <Card
+          className={styles.shell}
             title=""
             style={{
-              width: "400px",
+              
               margin: "0 auto",
+              borderRadius: "15px",
+              
             }}
           >
             <div className={styles.lottie} ref={container}></div>
@@ -116,31 +143,31 @@ export default function Home() {
                 ]}
               >
                 <Select placeholder="Select your story style">
-                  <Select.Option value="write a disney story">
+                  <Select.Option value="A Disney Story">
                     Disney Story
                   </Select.Option>
-                  <Select.Option value="write a scary story">
+                  <Select.Option value="A Scary Story">
                     Scary Story
                   </Select.Option>
-                  <Select.Option value="write a romance story">
+                  <Select.Option value="A Romance Story">
                     Romance Story
                   </Select.Option>
-                  <Select.Option value="write a comedy story">
+                  <Select.Option value="A Comedy Story">
                     Comedy Story
                   </Select.Option>
-                  <Select.Option value="write a fantasy story">
+                  <Select.Option value="A Fantasy Story">
                     Fantasy Story
                   </Select.Option>
-                  <Select.Option value="write a mystery story">
+                  <Select.Option value="A Mystery Story">
                     Mystery Story
                   </Select.Option>
-                  <Select.Option value="write a thriller story">
+                  <Select.Option value="A Thriller Story">
                     Thriller Story
                   </Select.Option>
-                  <Select.Option value="write a sci-fi story">
+                  <Select.Option value="A Sci-fi Story">
                     Sci-fi Story
                   </Select.Option>
-                  <Select.Option value="write a western story">
+                  <Select.Option value="A Western Story">
                     Western Story
                   </Select.Option>
                 </Select>
@@ -169,14 +196,16 @@ export default function Home() {
                 rules={[{ required: true, message: "Plots of the story!" }]}
               >
                 <Input.TextArea
-                  placeholder="Plot twist of the story"
+                  placeholder="Plot of the story"
                   showCount
                 />
               </Form.Item>
               <Form.Item>
-                <Button
+                <Button 
+                
                   onClick={() => setAutoplay(true)}
-                  type="primary"
+                  
+                  icon={<PoweroffOutlined />}
                   htmlType="submit"
                   loading={isLoading}
                 >
@@ -187,28 +216,25 @@ export default function Home() {
           </Card>
 
 <div className={styles.modalContainer}>
+
   {story && (
-    <Modal width={600} visible={true} onCancel={handleModalClose} footer={null}>
-      
-      {/* <Card
-        cover={image && <img src={image} alt="Your story" />}
-        title="Your story"
-        extra={
-          <Button
-            type="default"
-            onClick={() => {
-              playStory();
-            }}
-            loading={isLoadingAudio}
-          >
-            <PlayCircleOutlined /> Play story
-          </Button>
-        }
-      ></Card> */}
-      {/* <div className={styles.modalContent}>{story.type}</div> */}
+    <Modal 
+    width={600} visible={true} onCancel={handleModalClose} footer={null}>  
+
+<div>
+<div className={styles.button}>
+    <PDFDownloadLink document={<MyDoc story={story} image={image} />} fileName="YourStory.pdf">
+      {({ blob, url, loading, error }) =>
+        loading ? 'Loading document...' : 'Download Your Story'
+      }
+    </PDFDownloadLink>
+    </div>
+
       <div className={styles.imageWrap}><img src={image} alt="Your story" /></div>
+      </div>
+  <div className={styles.storyTitle}><p>{selectedStory} about {mainCharacterName}</p>
+  </div>
         <pre className={styles.container}>{story}</pre>
-      
     </Modal>
   )}
 </div>
