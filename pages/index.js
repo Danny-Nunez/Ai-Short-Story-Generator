@@ -4,10 +4,9 @@ import styles from "@/styles/Home.module.css";
 import { Input, Select, Button, Form, Space, Card, message, Modal } from "antd";
 import { useState } from "react";
 import request from "@/utils/request";
-import { PlayCircleOutlined } from "@ant-design/icons";
+import { PoweroffOutlined } from "@ant-design/icons";
 import lottie from "lottie-web";
 import React from "react";
-import { PoweroffOutlined } from '@ant-design/icons';
 import { PDFDownloadLink, Document, Page, Text, Image, View } from '@react-pdf/renderer';
 
 const inter = Inter({ subsets: ["latin"] });
@@ -100,10 +99,10 @@ export default function Home() {
     <Document>
       <Page style={{ paddingTop: 35, paddingBottom: 65, paddingHorizontal: 35 }}>
         
-        <Image style={{ width: '500px', height: '200px'}} src="https://ai-shortstory.vercel.app/aibanner.jpeg" />
+        <Image style={{ width: '530px', height: '212px', borderTopLeftRadius: 10, borderTopRightRadius: 10, borderBottomRightRadius: 10, borderBottomLeftRadius: 10 }} src="http://localhost:3000/aibanner.jpeg" />
         <View style={{ textAlign: 'center' }}>
-        <Text style={{ fontSize: 24, paddingTop: 10 }}>{selectedStory} about {mainCharacterName}</Text>
-        <Text>{story}</Text>
+        <Text style={{ fontSize: '18px', fontStyle: 'bold', paddingTop: 20 }}>{selectedStory} about {mainCharacterName}</Text>
+        <Text style={{ fontSize: '13px' }}>{story}</Text>
         </View>
         <Text style={{ position: 'absolute', fontSize: 12, bottom: 30, left: 0, right: 0, textAlign: 'center', color: 'grey'  }} render={({ pageNumber, totalPages }) => (
         `${pageNumber} / ${totalPages}`
@@ -116,7 +115,7 @@ export default function Home() {
   return (
   <>
     <Head>
-      <title>AI Story Time</title>
+      <title>Ai Short Story Generator</title>
       <link rel="icon" href="/favicon.ico" />
     </Head>
     <main className={styles.main}>
@@ -133,7 +132,7 @@ export default function Home() {
             }}
           >
             <div className={styles.lottie} ref={container}></div>
-            <div className={styles.title}>Ai Story Generator</div>
+            <div className={styles.title}>Ai Short Story Generator</div>
             <Form onFinish={onFinish} layout="vertical" name="basic">
               <Form.Item
                 label="Select a story style"
