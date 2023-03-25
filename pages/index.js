@@ -100,7 +100,7 @@ export default function Home() {
     <Document>
       <Page style={{ paddingTop: 35, paddingBottom: 65, paddingHorizontal: 35 }}>
         
-        <Image style={{ width: '600px', height: '250px'}} src="../public/aitest2.jpeg" />
+        <Image style={{ width: '600px', height: '250px'}} src="https://ai-shortstory.vercel.app/aitest2.jpeg" />
         <View style={{ textAlign: 'center' }}>
         <Text style={{ fontSize: 24 }}>{selectedStory} about {mainCharacterName}</Text>
         <Text>{story}</Text>
