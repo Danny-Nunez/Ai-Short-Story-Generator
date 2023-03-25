@@ -100,9 +100,9 @@ export default function Home() {
     <Document>
       <Page style={{ paddingTop: 35, paddingBottom: 65, paddingHorizontal: 35 }}>
         
-        <Image style={{ width: '600px', height: '250px'}} src="https://ai-shortstory.vercel.app/aitest2.jpeg" />
+        <Image style={{ width: '500px', height: '200px'}} src="https://ai-shortstory.vercel.app/aibanner.jpeg" />
         <View style={{ textAlign: 'center' }}>
-        <Text style={{ fontSize: 24 }}>{selectedStory} about {mainCharacterName}</Text>
+        <Text style={{ fontSize: 24, paddingTop: 10 }}>{selectedStory} about {mainCharacterName}</Text>
         <Text>{story}</Text>
         </View>
         <Text style={{ position: 'absolute', fontSize: 12, bottom: 30, left: 0, right: 0, textAlign: 'center', color: 'grey'  }} render={({ pageNumber, totalPages }) => (
