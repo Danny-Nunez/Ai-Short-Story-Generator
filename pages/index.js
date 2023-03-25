@@ -10,7 +10,7 @@ import React from "react";
 import { PDFDownloadLink, Document, Page, Text, Image, View } from '@react-pdf/renderer';
 
 const inter = Inter({ subsets: ["latin"] });
-const animationData = require("../public/ai-orb.json");
+const animationData = require("../public/story-icon.json");
 
 export default function Home() {
   const [isLoading, setLoadingTo] = useState(false);
