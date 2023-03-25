@@ -27,7 +27,7 @@ export default function Home() {
   
   const onFinish = async (values) => {
     setLoadingTo(true);
-
+    setAutoplay(true);
     try {
       const response = await request("generate-story", {
         method: "POST",
@@ -38,6 +38,7 @@ export default function Home() {
         setStoryTo(response.story);
         setImageTo(response.image);
         setIsModalVisible(true);
+        setAutoplay(false);
         setSelectedStory(values.type);
         setMainCharacterName(values.mainCharacterName);
         setTitle(`Generated ${values.type} Story`);
@@ -205,7 +206,7 @@ export default function Home() {
               <Form.Item>
                 <Button 
                 
-                  onClick={() => setAutoplay(true)}
+                  // onClick={() => setAutoplay(true)}
                   
                   icon={<PoweroffOutlined />}
                   htmlType="submit"
