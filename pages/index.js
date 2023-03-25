@@ -100,7 +100,7 @@ export default function Home() {
     <Document>
       <Page style={{ paddingTop: 35, paddingBottom: 65, paddingHorizontal: 35 }}>
         
-        <Image style={{ width: '530px', height: '212px', borderTopLeftRadius: 10, borderTopRightRadius: 10, borderBottomRightRadius: 10, borderBottomLeftRadius: 10 }} src="http://localhost:3000/aibanner.jpeg" />
+        <Image style={{ width: '530px', height: '212px', borderTopLeftRadius: 10, borderTopRightRadius: 10, borderBottomRightRadius: 10, borderBottomLeftRadius: 10 }} src="https://ai-shortstory.vercel.app/aibanner.jpeg" />
         <View style={{ textAlign: 'center' }}>
         <Text style={{ fontSize: '18px', fontStyle: 'bold', paddingTop: 20 }}>{selectedStory} about {mainCharacterName}</Text>
         <Text style={{ fontSize: '13px' }}>{story}</Text>
