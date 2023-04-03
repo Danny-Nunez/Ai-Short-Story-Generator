@@ -1,6 +1,6 @@
 # AI Short Story Generator
 
-Using Open AI & Dall-e to generate a beautiful story. This is a simple script doing a api call with prompts to openai and dalle to generate the short story with image. Included is disney influenced lottie preloader for a splash of magic. 
+Using Open AI & Dall-e to generate a beautiful story. This is a simple script doing a api call with prompts to openai and dalle to generate the short story with image. Included is a disney influenced lottie preloader for a splash of magic. 
 Thank you to Vincent Narbot for the [starter code](https://github.com/VincentNarbot/ai-story), Here is my modified version.  
 <img width="1117" alt="Screen Shot 2023-04-02 at 9 50 24 PM" src="https://user-images.githubusercontent.com/114783191/229394038-faed15af-f664-44ba-b29b-bb5e7b3305a5.png">
 
